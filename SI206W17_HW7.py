@@ -9,7 +9,7 @@ import twitter_info # still need this in the same directory, filled out
 
 ## Make sure to comment with:
 # Your name: Prashant Toteja
-# The names of any people you worked with for this assignment: N/A
+# The names of any people you worked with for this assignment: Scott Z.
 
 # ******** #
 ### Useful resources for this HW:
@@ -178,11 +178,11 @@ first_rt = unpacked[0]
 
 # Finally, done with database stuff for a bit: write a line of code to close the cursor to the database.
 
-
 conn.close()
+
 ## [PART 3] - Processing data
 
-# Define a function get_twitter_users that accepts a string as in put and returns a SET of the _twitter screennames_ of each twitter user who was mentioned in that string. 
+# Define a function get_twitter_users that accepts a string as input and returns a SET of the _twitter screennames_ of each twitter user who was mentioned in that string. 
 
 # Note that the syntax for mentions in a tweet is that the username is preceded by an "@" character, e.g. "@umsi" or "@aadl", and cannot contain any punctuation besides underscores -- that's how to determine what user names are mentioned. (e.g. @hello? is just the username "hello", but @programmer_at_umsi is "programmer_at_umsi"). 
 
@@ -194,7 +194,10 @@ conn.close()
 
 # If you want to challenge yourself here -- this function definition (what goes under the def statement) CAN be written in one line! Definitely, definitely fine to write it with multiple lines, too, which will be much easier and clearer.
 
-
+def get_twitter_users(s):
+	screennames = re.findall(r'@\w+', s)
+	screennamesdisplayed = set([i[1:] for i in screennames])
+	return screennamesdisplayed
 
 
 
